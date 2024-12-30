@@ -78,4 +78,56 @@ nav a:hover {
         transform: translateX(-5px);
     }
     50% {
-        tr
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+/* Styles for mobile devices */
+@media screen and (max-width: 768px) {
+    /* Zoom out by setting a smaller scale */
+    body {
+        transform: scale(0.8); /* Zoom out */
+        transform-origin: top center; /* Keep it zoomed from top */
+        padding: 0 10px;
+    }
+
+    h1 {
+        font-size: 3rem; /* Smaller font size for mobile */
+    }
+
+    .emoji {
+        font-size: 2rem; /* Smaller emoji */
+    }
+
+    .click-prompt {
+        font-size: 1.2rem; /* Smaller text */
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column; /* Stack navigation links vertically */
+        align-items: center;
+    }
+
+    nav a {
+        margin: 10px 0; /* Space between links */
+        font-size: 1rem; /* Smaller text for nav links */
+    }
+
+    .description {
+        font-size: 1rem; /* Adjust description font size */
+        max-width: 100%; /* Allow full width */
+    }
+
+    video {
+        object-fit: contain; /* Fit video within the container */
+    }
+
+    /* Optional: Adjust falling emojis animation for mobile */
+    .falling-emoji {
+        font-size: 2rem;
+    }
+}
