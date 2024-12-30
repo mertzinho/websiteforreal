@@ -10,6 +10,7 @@ body {
     font-family: 'Arial', sans-serif;
     color: white;
     overflow: hidden;
+    position: relative; /* Allow absolute positioning for video */
 }
 
 h1 {
@@ -85,25 +86,42 @@ nav a:hover {
     }
 }
 
+.description {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 1.1rem;
+    max-width: 600px;
+}
+
+/* Styles for the video */
+video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the full screen */
+    z-index: -1; /* Send video to the background */
+}
+
 /* Styles for mobile devices */
 @media screen and (max-width: 768px) {
-    /* Zoom out by setting a smaller scale */
-    body {
-        transform: scale(0.8); /* Zoom out */
-        transform-origin: top center; /* Keep it zoomed from top */
-        padding: 0 10px;
+    /* Zoom out only the content (text and boxes) */
+    .content {
+        transform: scale(0.8); /* Zoom out content */
+        transform-origin: top center; /* Keep it zoomed from the top */
     }
 
     h1 {
-        font-size: 3rem; /* Smaller font size for mobile */
+        font-size: 3rem; /* Adjust font size for mobile */
     }
 
     .emoji {
-        font-size: 2rem; /* Smaller emoji */
+        font-size: 2rem; /* Adjust emoji size */
     }
 
     .click-prompt {
-        font-size: 1.2rem; /* Smaller text */
+        font-size: 1.2rem; /* Adjust prompt text size */
     }
 
     nav {
@@ -114,7 +132,7 @@ nav a:hover {
 
     nav a {
         margin: 10px 0; /* Space between links */
-        font-size: 1rem; /* Smaller text for nav links */
+        font-size: 1rem; /* Smaller font size for nav links */
     }
 
     .description {
@@ -122,12 +140,13 @@ nav a:hover {
         max-width: 100%; /* Allow full width */
     }
 
-    video {
-        object-fit: contain; /* Fit video within the container */
-    }
-
     /* Optional: Adjust falling emojis animation for mobile */
     .falling-emoji {
         font-size: 2rem;
+    }
+
+    /* Adjust video background to cover the screen on mobile */
+    video {
+        object-fit: cover; /* Ensure the video covers the entire screen */
     }
 }
