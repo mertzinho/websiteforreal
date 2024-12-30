@@ -1,9 +1,10 @@
 /* Add this at the top of your CSS file */
 @font-face {
     font-family: 'Pricedown';
-    src: url('https://raw.githubusercontent.com/mertzinho/websiteforreal/blob/main/fonts/Pricedown%20Bl.otf') format('otf');
+    src: url('https://raw.githubusercontent.com/mertzinho/websiteforreal/main/fonts/Pricedown%20Bl.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
+
 }
 
 /* General styles */
