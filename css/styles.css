@@ -6,7 +6,6 @@
     font-style: normal;
 }
 
-
 /* General styles */
 body {
     margin: 0;
@@ -126,8 +125,9 @@ nav a:hover {
         margin: 5px;
     }
 
+    /* Adjust description font size */
     .description {
-        font-size: 0.7rem; /* Reduced by 30% */
+        font-size: 0.9rem; /* Reduced by 10% (adjust as needed) */
         max-width: 100%;
     }
 
