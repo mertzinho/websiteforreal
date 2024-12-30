@@ -89,13 +89,14 @@ nav a:hover {
 @media screen and (max-width: 768px) {
     /* Zoom out by setting a smaller scale */
     body {
-        transform: scale(0.8); /* Zoom out */
+        transform: scale(0.75); /* Zoom out more */
         transform-origin: top center; /* Keep it zoomed from top */
         padding: 0 10px;
     }
 
     h1 {
         font-size: 3rem; /* Smaller font size for mobile */
+        margin-top: 10vh; /* Add margin to prevent text from being cut off */
     }
 
     .emoji {
@@ -106,14 +107,16 @@ nav a:hover {
         font-size: 1.2rem; /* Smaller text */
     }
 
+    /* Adjust the navigation links */
     nav {
         display: flex;
-        flex-direction: column; /* Stack navigation links vertically */
-        align-items: center;
+        flex-wrap: wrap; /* Allow wrapping for mobile */
+        justify-content: center; /* Center links */
+        margin-top: 20px;
     }
 
     nav a {
-        margin: 10px 0; /* Space between links */
+        margin: 10px; /* Space between links */
         font-size: 1rem; /* Smaller text for nav links */
     }
 
@@ -126,7 +129,17 @@ nav a:hover {
         object-fit: contain; /* Fit video within the container */
     }
 
-    /* Optional: Adjust falling emojis animation for mobile */
+    /* Layout the boxes 2 next to each other, 1 below */
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 boxes per row */
+        gap: 20px; /* Space between boxes */
+        width: 100%;
+        max-width: 700px; /* Limit max width */
+        margin-top: 20px;
+    }
+
+    /* Ensure falling emojis are smaller */
     .falling-emoji {
         font-size: 2rem;
     }
