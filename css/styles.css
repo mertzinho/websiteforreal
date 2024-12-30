@@ -22,13 +22,16 @@ h1 {
 
 nav {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping of nav items */
+    justify-content: center; /* Center the navigation links */
+    gap: 15px; /* Space between links */
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
-    margin: 0 15px;
     padding: 10px 15px;
     border: 1px solid white;
     border-radius: 5px;
@@ -57,7 +60,7 @@ nav a:hover {
 .falling-emoji {
     position: absolute;
     top: -50px;
-    font-size: 3rem;
+    font-size: 4rem; /* Larger size for falling emojis */
     animation: fall 3s linear forwards;
 }
 
@@ -67,7 +70,7 @@ nav a:hover {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(100vh);
+        transform: translateY(100vh); /* Falling all the way to the bottom */
     }
 }
 
@@ -86,6 +89,7 @@ nav a:hover {
     }
 }
 
+/* Styles for description text */
 .description {
     margin-top: 30px;
     text-align: center;
@@ -108,8 +112,8 @@ video {
 @media screen and (max-width: 768px) {
     /* Zoom out only the content (text and boxes) */
     .content {
-        transform: scale(0.8); /* Zoom out content */
-        transform-origin: top center; /* Keep it zoomed from the top */
+        transform: scale(0.9); /* Slight zoom out */
+        transform-origin: top center; /* Keep zoomed from top */
     }
 
     h1 {
@@ -117,7 +121,7 @@ video {
     }
 
     .emoji {
-        font-size: 2rem; /* Adjust emoji size */
+        font-size: 2.5rem; /* Adjust clickable emoji size */
     }
 
     .click-prompt {
@@ -126,13 +130,14 @@ video {
 
     nav {
         display: flex;
-        flex-direction: column; /* Stack navigation links vertically */
-        align-items: center;
+        flex-wrap: wrap; /* Wrap nav links */
+        justify-content: center; /* Center links */
     }
 
     nav a {
-        margin: 10px 0; /* Space between links */
         font-size: 1rem; /* Smaller font size for nav links */
+        padding: 8px 12px; /* Adjust padding */
+        margin: 5px; /* Space between links */
     }
 
     .description {
@@ -140,9 +145,10 @@ video {
         max-width: 100%; /* Allow full width */
     }
 
-    /* Optional: Adjust falling emojis animation for mobile */
+    /* Falling emoji adjustments */
     .falling-emoji {
-        font-size: 2rem;
+        font-size: 3rem; /* Adjust size for falling emojis */
+        animation-duration: 4s; /* Slightly longer falling duration */
     }
 
     /* Adjust video background to cover the screen on mobile */
