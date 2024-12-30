@@ -1,38 +1,33 @@
+/* General styles */
 body {
     margin: 0;
-    padding: 0;
-    width: 100vw;
     height: 100vh;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
     background: black;
-    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Arial', sans-serif;
+    color: white;
     overflow: hidden;
 }
 
 h1 {
-    font-size: 4rem; /* Scale down for mobile */
-    text-align: center;
-    margin: 0;
+    font-family: 'Pricedown', sans-serif;
+    font-size: 5rem;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    margin: 0;
 }
 
 nav {
-    display: flex;
-    flex-wrap: wrap; /* Allow links to stack on smaller screens */
-    justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin: 0 15px;
     padding: 10px 15px;
     border: 1px solid white;
     border-radius: 5px;
@@ -48,14 +43,53 @@ nav a:hover {
     font-size: 3rem;
     cursor: pointer;
     margin-top: 20px;
+    animation: shake 1s infinite;
+}
+
+.click-prompt {
+    font-family: 'Pricedown', sans-serif;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.falling-emoji {
+    position: absolute;
+    top: -50px;
+    font-size: 3rem;
+    animation: fall 3s linear forwards;
+}
+
+/* Keyframes for animations */
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
 }
 
 .description {
     margin-top: 30px;
     text-align: center;
-    font-size: 1rem;
-    padding: 0 10px; /* Add padding for readability */
-    max-width: 90%; /* Prevent the text from stretching */
+    font-size: 1.1rem;
+    max-width: 600px;
 }
 
 video {
@@ -66,4 +100,62 @@ video {
     height: 100%;
     object-fit: cover;
     z-index: -1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    /* For Tablets and Mobile */
+    body {
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .emoji {
+        font-size: 2.5rem;
+    }
+
+    .click-prompt {
+        font-size: 1.2rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 1rem;
+        padding: 10px;
+    }
+}
+
+/* Zoom out for small screens (Mobile) */
+@media (max-width: 480px) {
+    /* For smaller mobile devices */
+    body {
+        transform: scale(0.9);
+        transform-origin: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .emoji {
+        font-size: 2rem;
+    }
+
+    .click-prompt {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
 }
