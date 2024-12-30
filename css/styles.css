@@ -125,10 +125,11 @@ nav a:hover {
         margin: 5px;
     }
 
-    /* Adjust description font size */
+    /* Directly target the description text */
     .description {
-        font-size: 0.9rem; /* Reduced by 10% (adjust as needed) */
+        font-size: 0.8rem; /* Reduced by 20% */
         max-width: 100%;
+        line-height: 1.4; /* Optional: Adjust line-height for better readability */
     }
 
     /* Adjust video background to cover the screen on mobile */
