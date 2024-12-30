@@ -93,7 +93,7 @@ nav a:hover {
 @media screen and (max-width: 768px) {
     /* Reduce the size of $arabmoney heading by 60% on mobile */
     h1 {
-        font-size: 1.6rem !important; /* 60% smaller than 4rem on mobile */
+        font-size: 2.4rem !important; /* Adjusted to 2.4rem */
     }
 
     .emoji {
@@ -118,7 +118,7 @@ nav a:hover {
     }
 
     .description {
-        font-size: 1rem;
+        font-size: 0.7rem; /* Reduced by 30% */
         max-width: 100%;
     }
 
