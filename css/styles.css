@@ -1,7 +1,7 @@
 /* Add this at the top of your CSS file */
 @font-face {
     font-family: 'Pricedown';
-    src: url('https://github.com/infin1tyy/pricedown-font-web/blob/master/pricedown.otf') format('opentype');
+    src: url('https://raw.githubusercontent.com/vRP-Official-Developers/dunko_vrp/master/vrp/gui/fonts/Pricedown.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
