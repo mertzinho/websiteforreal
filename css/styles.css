@@ -15,7 +15,7 @@ body {
 }
 
 h1 {
-    font-size: 4rem;
+    font-size: 4rem; /* Scale down for mobile */
     text-align: center;
     margin: 0;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -23,7 +23,7 @@ h1 {
 
 nav {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow links to stack on smaller screens */
     justify-content: center;
     gap: 10px;
     margin: 20px 0;
@@ -54,8 +54,8 @@ nav a:hover {
     margin-top: 30px;
     text-align: center;
     font-size: 1rem;
-    padding: 0 10px;
-    max-width: 90%;
+    padding: 0 10px; /* Add padding for readability */
+    max-width: 90%; /* Prevent the text from stretching */
 }
 
 video {
@@ -66,47 +66,4 @@ video {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-}
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-    }
-
-    .emoji {
-        font-size: 2.5rem;
-    }
-
-    nav {
-        flex-direction: column;
-    }
-
-    nav a {
-        width: 90%;
-        text-align: center;
-        font-size: 0.9rem;
-    }
-
-    .description {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-
-    .emoji {
-        font-size: 2rem;
-    }
-
-    nav a {
-        font-size: 0.8rem;
-        padding: 8px;
-    }
-
-    .description {
-        font-size: 0.8rem;
-    }
 }
