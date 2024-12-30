@@ -10,12 +10,12 @@ body {
     font-family: 'Arial', sans-serif;
     color: white;
     overflow: hidden;
-    position: relative; /* Allow absolute positioning for video */
+    position: relative;
 }
 
 h1 {
     font-family: 'Pricedown', sans-serif;
-    font-size: 4rem; /* Smaller font size for heading */
+    font-size: 4rem; /* Default font size for desktop */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
 }
@@ -23,9 +23,9 @@ h1 {
 nav {
     margin-top: 20px;
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping of nav items */
-    justify-content: center; /* Center the navigation links */
-    gap: 15px; /* Space between links */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
 nav a {
@@ -44,7 +44,7 @@ nav a:hover {
 }
 
 .emoji {
-    font-size: 2.5rem; /* Adjust size for clickable emoji */
+    font-size: 2.5rem;
     cursor: pointer;
     margin-top: 20px;
     animation: shake 1s infinite;
@@ -52,7 +52,7 @@ nav a:hover {
 
 .click-prompt {
     font-family: 'Pricedown', sans-serif;
-    font-size: 1.2rem; /* Adjust prompt text size */
+    font-size: 1.2rem;
     margin-top: 10px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
@@ -60,7 +60,7 @@ nav a:hover {
 .falling-emoji {
     position: absolute;
     top: -50px;
-    font-size: 4rem; /* Keep the falling emojis larger */
+    font-size: 4rem;
     animation: fall 3s linear forwards;
 }
 
@@ -70,7 +70,7 @@ nav a:hover {
         transform: translateY(0);
     }
     100% {
-        transform: translateY(100vh); /* Falling all the way to the bottom */
+        transform: translateY(100vh);
     }
 }
 
@@ -89,71 +89,47 @@ nav a:hover {
     }
 }
 
-/* Styles for description text */
-.description {
-    margin-top: 30px;
-    text-align: center;
-    font-size: 1.1rem;
-    max-width: 600px;
-}
-
-/* Styles for the video */
-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cover the full screen */
-    z-index: -1; /* Send video to the background */
-}
-
 /* Styles for mobile devices */
 @media screen and (max-width: 768px) {
-    /* Zoom out only the content (text and boxes) */
-    .content {
-        transform: scale(0.75); /* Stronger zoom-out effect for text and boxes */
-        transform-origin: top center; /* Keep zoomed from top */
-    }
-
+    /* Reduce the size of $arabmoney heading by 60% on mobile */
     h1 {
-        font-size: 2.5rem; /* Reduce heading size even more */
+        font-size: 1.6rem; /* 60% smaller than 4rem on mobile */
     }
 
     .emoji {
-        font-size: 2rem; /* Adjust clickable emoji size */
+        font-size: 2rem;
     }
 
     .click-prompt {
-        font-size: 1rem; /* Adjust prompt text size */
+        font-size: 1rem;
     }
 
     nav {
         display: flex;
-        flex-wrap: wrap; /* Wrap nav links */
-        justify-content: center; /* Center links */
-        gap: 15px; /* Maintain space between links */
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
 
     nav a {
-        font-size: 1rem; /* Smaller font size for nav links */
-        padding: 8px 12px; /* Adjust padding */
-        margin: 5px; /* Space between links */
+        font-size: 1rem;
+        padding: 8px 12px;
+        margin: 5px;
     }
 
     .description {
-        font-size: 1rem; /* Adjust description font size */
-        max-width: 100%; /* Allow full width */
-    }
-
-    /* Falling emoji adjustments */
-    .falling-emoji {
-        font-size: 4rem; /* Keep falling emojis the same size */
-        animation-duration: 4s; /* Slightly longer falling duration */
+        font-size: 1rem;
+        max-width: 100%;
     }
 
     /* Adjust video background to cover the screen on mobile */
     video {
-        object-fit: cover; /* Ensure the video covers the entire screen */
+        object-fit: cover;
+    }
+
+    /* Keep falling emojis at the same size */
+    .falling-emoji {
+        font-size: 4rem;
+        animation-duration: 4s;
     }
 }
