@@ -87,11 +87,10 @@ nav a:hover {
 
 /* Styles for mobile devices */
 @media screen and (max-width: 768px) {
-    /* Zoom out by setting a smaller scale */
-    body {
-        transform: scale(0.75); /* Zoom out more */
-        transform-origin: top center; /* Keep it zoomed from top */
-        padding: 0 10px;
+    /* Apply zoom effect only to text elements */
+    h1, .click-prompt, .description {
+        transform: scale(0.75); /* Zoom out text only */
+        transform-origin: center; /* Keep text centered */
     }
 
     h1 {
@@ -100,11 +99,11 @@ nav a:hover {
     }
 
     .emoji {
-        font-size: 2rem; /* Smaller emoji */
+        font-size: 2rem; /* Keep emoji size normal */
     }
 
     .click-prompt {
-        font-size: 1.2rem; /* Smaller text */
+        font-size: 1.2rem; /* Adjust text size */
     }
 
     /* Adjust the navigation links */
