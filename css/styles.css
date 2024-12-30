@@ -15,7 +15,7 @@ body {
 
 h1 {
     font-family: 'Pricedown', sans-serif;
-    font-size: 5rem;
+    font-size: 4rem; /* Smaller font size for heading */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
 }
@@ -44,7 +44,7 @@ nav a:hover {
 }
 
 .emoji {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Adjust size for clickable emoji */
     cursor: pointer;
     margin-top: 20px;
     animation: shake 1s infinite;
@@ -52,7 +52,7 @@ nav a:hover {
 
 .click-prompt {
     font-family: 'Pricedown', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Adjust prompt text size */
     margin-top: 10px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
 }
@@ -60,7 +60,7 @@ nav a:hover {
 .falling-emoji {
     position: absolute;
     top: -50px;
-    font-size: 4rem; /* Larger size for falling emojis */
+    font-size: 4rem; /* Keep the falling emojis larger */
     animation: fall 3s linear forwards;
 }
 
@@ -112,26 +112,27 @@ video {
 @media screen and (max-width: 768px) {
     /* Zoom out only the content (text and boxes) */
     .content {
-        transform: scale(0.9); /* Slight zoom out */
+        transform: scale(0.75); /* Stronger zoom-out effect for text and boxes */
         transform-origin: top center; /* Keep zoomed from top */
     }
 
     h1 {
-        font-size: 3rem; /* Adjust font size for mobile */
+        font-size: 2.5rem; /* Reduce heading size even more */
     }
 
     .emoji {
-        font-size: 2.5rem; /* Adjust clickable emoji size */
+        font-size: 2rem; /* Adjust clickable emoji size */
     }
 
     .click-prompt {
-        font-size: 1.2rem; /* Adjust prompt text size */
+        font-size: 1rem; /* Adjust prompt text size */
     }
 
     nav {
         display: flex;
         flex-wrap: wrap; /* Wrap nav links */
         justify-content: center; /* Center links */
+        gap: 15px; /* Maintain space between links */
     }
 
     nav a {
@@ -147,7 +148,7 @@ video {
 
     /* Falling emoji adjustments */
     .falling-emoji {
-        font-size: 3rem; /* Adjust size for falling emojis */
+        font-size: 4rem; /* Keep falling emojis the same size */
         animation-duration: 4s; /* Slightly longer falling duration */
     }
 
