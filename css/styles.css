@@ -1,4 +1,4 @@
-/* Import custom font */
+ /* Add this at the top of your CSS file */
 @font-face {
     font-family: 'Pricedown';
     src: url('https://raw.githubusercontent.com/vRP-Official-Developers/dunko_vrp/master/vrp/gui/fonts/Pricedown.woff') format('woff');
@@ -22,8 +22,8 @@ body {
 }
 
 h1 {
-    font-family: 'Pricedown', sans-serif; /* GTA-style font */
-    font-size: 4rem;
+    font-family: 'Pricedown', sans-serif;
+    font-size: 4rem; /* Adjust the size as needed */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
 }
@@ -59,7 +59,7 @@ nav a:hover {
 }
 
 .click-prompt {
-    font-family: 'Pricedown', sans-serif; /* GTA-style font */
+    font-family: 'Pricedown', sans-serif;
     font-size: 1.2rem;
     margin-top: 10px;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
@@ -97,35 +97,11 @@ nav a:hover {
     }
 }
 
-/* General video styles */
-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Default: Show desktop video */
-#mobile-video {
-    display: none;
-}
-
-/* Mobile-specific styles */
+/* Styles for mobile devices */
 @media screen and (max-width: 768px) {
-    /* Hide desktop video, show mobile video */
-    #desktop-video {
-        display: none;
-    }
-    #mobile-video {
-        display: block;
-    }
-
-    /* Adjust styles for mobile devices */
+    /* Reduce the size of $arabmoney heading by 60% on mobile */
     h1 {
-        font-size: 2.4rem; /* Adjusted to 2.4rem */
+        font-size: 2.4rem !important; /* Adjusted to 2.4rem */
     }
 
     .emoji {
@@ -136,18 +112,32 @@ video {
         font-size: 1rem;
     }
 
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
     nav a {
         font-size: 1rem;
         padding: 8px 12px;
         margin: 5px;
     }
 
+    /* Directly target the description text */
     .description {
         font-size: 0.8rem; /* Reduced by 20% */
         max-width: 100%;
         line-height: 1.4; /* Optional: Adjust line-height for better readability */
     }
 
+    /* Adjust video background to cover the screen on mobile */
+    video {
+        object-fit: cover;
+    }
+
+    /* Keep falling emojis at the same size */
     .falling-emoji {
         font-size: 4rem;
         animation-duration: 4s;
