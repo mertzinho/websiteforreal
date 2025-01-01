@@ -6,6 +6,14 @@
     <title>$ArabMoney</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        @font-face {
+            font-family: 'Pricedown';
+            src: url('https://raw.githubusercontent.com/vRP-Official-Developers/dunko_vrp/master/vrp/gui/fonts/Pricedown.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* General styles */
         body {
             margin: 0;
             height: 100vh;
@@ -17,48 +25,76 @@
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
+            position: relative;
         }
+
         h1 {
-            font-family: 'Pricedown', sans-serif; /* GTA-style font */
-            font-size: 5rem;
+            font-family: 'Pricedown', sans-serif;
+            font-size: 4rem; /* Adjust the size as needed */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             margin: 0;
         }
+
         nav {
             margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
         }
+
         nav a {
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
-            margin: 0 15px;
             padding: 10px 15px;
             border: 1px solid white;
             border-radius: 5px;
             transition: background 0.3s, color 0.3s;
         }
+
         nav a:hover {
             background: white;
             color: black;
         }
+
         .emoji {
-            font-size: 3rem;
+            font-size: 2.5rem;
             cursor: pointer;
             margin-top: 20px;
             animation: shake 1s infinite;
         }
+
         .click-prompt {
-            font-family: 'Pricedown', sans-serif; /* GTA-style font */
-            font-size: 1.5rem;
+            font-family: 'Pricedown', sans-serif;
+            font-size: 1.2rem;
             margin-top: 10px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
+
         .falling-emoji {
             position: absolute;
             top: -50px;
-            font-size: 3rem;
+            font-size: 4rem;
             animation: fall 3s linear forwards;
         }
+
+        /* Background video styles */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Keyframes for animations */
         @keyframes fall {
             0% {
                 transform: translateY(0);
@@ -67,6 +103,7 @@
                 transform: translateY(100vh);
             }
         }
+
         @keyframes shake {
             0%, 100% {
                 transform: translateX(0);
@@ -81,26 +118,55 @@
                 transform: translateX(-5px);
             }
         }
-        .description {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 1.1rem;
-            max-width: 600px;
-        }
-        video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
+
+        /* Styles for mobile devices */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.4rem !important; /* Adjusted to 2.4rem */
+            }
+
+            .emoji {
+                font-size: 2rem;
+            }
+
+            .click-prompt {
+                font-size: 1rem;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 1rem;
+                padding: 8px 12px;
+                margin: 5px;
+            }
+
+            .description {
+                font-size: 0.8rem;
+                max-width: 100%;
+                line-height: 1.4;
+            }
+
+            .falling-emoji {
+                font-size: 4rem;
+                animation-duration: 4s;
+            }
         }
     </style>
 </head>
 <body>
-    <video autoplay loop muted>
+    <video autoplay loop muted id="desktop-video" class="background-video">
         <source src="assets/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <video autoplay loop muted id="mobile-video" class="background-video hidden">
+        <source src="assets/mobile-background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -127,30 +193,62 @@
     <audio id="click-sound" src="assets/coin-drop.mp3"></audio>
 
     <script>
-        const emojiElement = document.getElementById('emoji');
-        const clickSound = document.getElementById('click-sound');
+        document.addEventListener('DOMContentLoaded', () => {
+            const desktopVideo = document.getElementById('desktop-video');
+            const mobileVideo = document.getElementById('mobile-video');
 
-        emojiElement.addEventListener('click', () => {
-            // Play sound effect
-            clickSound.currentTime = 0;
-            clickSound.play();
-
-            // Generate falling emojis
-            for (let i = 0; i < 50; i++) {
-                const fallingEmoji = document.createElement('div');
-                const emojis = ['💵', '💰']; // Only Dollar and Money Bag
-                fallingEmoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                fallingEmoji.classList.add('falling-emoji');
-                fallingEmoji.style.left = Math.random() * 100 + 'vw';
-                fallingEmoji.style.animationDuration = Math.random() * 1 + 2 + 's';
-                fallingEmoji.style.fontSize = '4rem';
-                document.body.appendChild(fallingEmoji);
-
-                fallingEmoji.addEventListener('animationend', () => {
-                    fallingEmoji.remove();
-                });
+            // Check window width to determine which video to play
+            if (window.innerWidth <= 768) {
+                desktopVideo.pause();
+                desktopVideo.style.display = 'none';
+                mobileVideo.style.display = 'block';
+                mobileVideo.play();
+            } else {
+                mobileVideo.pause();
+                mobileVideo.style.display = 'none';
+                desktopVideo.style.display = 'block';
+                desktopVideo.play();
             }
+
+            // Listen for window resize to toggle video
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768) {
+                    desktopVideo.pause();
+                    desktopVideo.style.display = 'none';
+                    mobileVideo.style.display = 'block';
+                    mobileVideo.play();
+                } else {
+                    mobileVideo.pause();
+                    mobileVideo.style.display = 'none';
+                    desktopVideo.style.display = 'block';
+                    desktopVideo.play();
+                }
+            });
+
+            // Falling emoji animation logic
+            const emojiElement = document.getElementById('emoji');
+            const clickSound = document.getElementById('click-sound');
+
+            emojiElement.addEventListener('click', () => {
+                clickSound.currentTime = 0;
+                clickSound.play();
+
+                for (let i = 0; i < 50; i++) {
+                    const fallingEmoji = document.createElement('div');
+                    const emojis = ['💵', '💰'];
+                    fallingEmoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    fallingEmoji.classList.add('falling-emoji');
+                    fallingEmoji.style.left = Math.random() * 100 + 'vw';
+                    fallingEmoji.style.animationDuration = Math.random() * 1 + 2 + 's';
+                    fallingEmoji.style.fontSize = '4rem';
+                    document.body.appendChild(fallingEmoji);
+
+                    fallingEmoji.addEventListener('animationend', () => {
+                        fallingEmoji.remove();
+                    });
+                }
+            });
         });
     </script>
 </body>
-</html> 
+</html>
