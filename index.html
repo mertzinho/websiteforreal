@@ -6,7 +6,6 @@
     <title>$ArabMoney</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
-        /* General styles */
         body {
             margin: 0;
             height: 100vh;
@@ -18,61 +17,48 @@
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
-            position: relative;
         }
-
         h1 {
             font-family: 'Pricedown', sans-serif; /* GTA-style font */
-            font-size: 4rem; /* Adjust the size as needed */
+            font-size: 5rem;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             margin: 0;
         }
-
         nav {
             margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
         }
-
         nav a {
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
+            margin: 0 15px;
             padding: 10px 15px;
             border: 1px solid white;
             border-radius: 5px;
             transition: background 0.3s, color 0.3s;
         }
-
         nav a:hover {
             background: white;
             color: black;
         }
-
         .emoji {
-            font-size: 2.5rem;
+            font-size: 3rem;
             cursor: pointer;
             margin-top: 20px;
             animation: shake 1s infinite;
         }
-
         .click-prompt {
             font-family: 'Pricedown', sans-serif; /* GTA-style font */
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             margin-top: 10px;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
         }
-
         .falling-emoji {
             position: absolute;
             top: -50px;
-            font-size: 4rem;
+            font-size: 3rem;
             animation: fall 3s linear forwards;
         }
-
-        /* Keyframes for animations */
         @keyframes fall {
             0% {
                 transform: translateY(0);
@@ -81,7 +67,6 @@
                 transform: translateY(100vh);
             }
         }
-
         @keyframes shake {
             0%, 100% {
                 transform: translateX(0);
@@ -96,8 +81,12 @@
                 transform: translateX(-5px);
             }
         }
-
-        /* General video styles */
+        .description {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 600px;
+        }
         video {
             position: fixed;
             top: 0;
@@ -107,63 +96,11 @@
             object-fit: cover;
             z-index: -1;
         }
-
-        /* Default: Show desktop video */
-        #mobile-video {
-            display: none;
-        }
-
-        /* Mobile: Show mobile video, hide desktop video */
-        @media screen and (max-width: 768px) {
-            #desktop-video {
-                display: none;
-            }
-            #mobile-video {
-                display: block;
-            }
-
-            /* Adjust styles for mobile devices */
-            h1 {
-                font-size: 2.4rem; /* Adjusted to 2.4rem */
-            }
-
-            .emoji {
-                font-size: 2rem;
-            }
-
-            .click-prompt {
-                font-size: 1rem;
-            }
-
-            nav a {
-                font-size: 1rem;
-                padding: 8px 12px;
-                margin: 5px;
-            }
-
-            .description {
-                font-size: 0.8rem; /* Reduced by 20% */
-                max-width: 100%;
-                line-height: 1.4; /* Optional: Adjust line-height for better readability */
-            }
-
-            .falling-emoji {
-                font-size: 4rem;
-                animation-duration: 4s;
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Desktop Background Video -->
-    <video autoplay loop muted id="desktop-video">
+    <video autoplay loop muted>
         <source src="assets/background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-
-    <!-- Mobile Background Video -->
-    <video autoplay loop muted id="mobile-video">
-        <source src="assets/mobilebackground.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -216,4 +153,4 @@
         });
     </script>
 </body>
-</html>
+</html> 
