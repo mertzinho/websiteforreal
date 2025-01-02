@@ -1,3 +1,4 @@
+ /* Add this at the top of your CSS file */
 @font-face {
     font-family: 'Pricedown';
     src: url('https://raw.githubusercontent.com/vRP-Official-Developers/dunko_vrp/master/vrp/gui/fonts/Pricedown.woff') format('woff');
@@ -5,6 +6,7 @@
     font-style: normal;
 }
 
+/* General styles */
 body {
     margin: 0;
     height: 100vh;
@@ -21,7 +23,7 @@ body {
 
 h1 {
     font-family: 'Pricedown', sans-serif;
-    font-size: 4rem;
+    font-size: 4rem; /* Adjust the size as needed */
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     margin: 0;
 }
@@ -70,6 +72,7 @@ nav a:hover {
     animation: fall 3s linear forwards;
 }
 
+/* Keyframes for animations */
 @keyframes fall {
     0% {
         transform: translateY(0);
@@ -94,9 +97,11 @@ nav a:hover {
     }
 }
 
+/* Styles for mobile devices */
 @media screen and (max-width: 768px) {
+    /* Reduce the size of $arabmoney heading by 60% on mobile */
     h1 {
-        font-size: 2.4rem !important;
+        font-size: 2.4rem !important; /* Adjusted to 2.4rem */
     }
 
     .emoji {
@@ -107,22 +112,32 @@ nav a:hover {
         font-size: 1rem;
     }
 
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
     nav a {
         font-size: 1rem;
         padding: 8px 12px;
         margin: 5px;
     }
 
+    /* Directly target the description text */
     .description {
-        font-size: 0.8rem;
+        font-size: 0.8rem; /* Reduced by 20% */
         max-width: 100%;
-        line-height: 1.4;
+        line-height: 1.4; /* Optional: Adjust line-height for better readability */
     }
 
+    /* Adjust video background to cover the screen on mobile */
     video {
         object-fit: cover;
     }
 
+    /* Keep falling emojis at the same size */
     .falling-emoji {
         font-size: 4rem;
         animation-duration: 4s;
