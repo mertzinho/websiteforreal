@@ -18,26 +18,19 @@
             margin: 0;
             height: 100vh;
             background: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             font-family: 'Arial', sans-serif;
             color: white;
             overflow: hidden;
             position: relative;
         }
 
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            text-align: center;
-        }
-
         h1 {
             font-family: 'Pricedown', sans-serif;
-            font-size: 4rem;
+            font-size: 4rem; /* Adjust the size as needed */
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             margin: 0;
         }
@@ -51,7 +44,7 @@
         }
 
         nav a {
-            font-family: 'Pricedown', sans-serif;
+            font-family: 'Pricedown', sans-serif; /* Changed to Pricedown font */
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
@@ -95,7 +88,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            z-index: 1;
+            z-index: -1;
         }
 
         .hidden {
@@ -130,7 +123,7 @@
         /* Styles for mobile devices */
         @media screen and (max-width: 768px) {
             h1 {
-                font-size: 2.4rem !important;
+                font-size: 2.4rem !important; /* Adjusted to 2.4rem */
             }
 
             .emoji {
@@ -141,9 +134,23 @@
                 font-size: 1rem;
             }
 
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
             nav a {
                 font-size: 1rem;
                 padding: 8px 12px;
+                margin: 5px;
+            }
+
+            .description {
+                font-size: 0.8rem;
+                max-width: 100%;
+                line-height: 1.4;
             }
 
             .falling-emoji {
@@ -164,24 +171,85 @@
         Your browser does not support the video tag.
     </video>
 
-    <div class="content-wrapper">
-        <h1>$ArabMoney</h1>
-        <div class="emoji" id="emoji">💰</div>
-        <div class="click-prompt">Click to get Arab Money!</div>
-        <nav>
-            <a href="https://t.me/yourtelegramlink" target="_blank">Telegram</a>
-            <a href="https://pump.fun" target="_blank">Pump.fun</a>
-            <a href="https://www.instagram.com/yourinstagram" target="_blank">Instagram</a>
-            <a href="https://x.com/yourxprofile" target="_blank">X</a>
-            <a href="https://www.tiktok.com/@yourtiktok" target="_blank">TikTok</a>
-        </nav>
-        <div class="description">
-            💰$ARAB MONEY💰 is the ultimate high-roller meme coin on Solana, tradable on Jupiter, Raydium, and the hottest centralized exchanges! 🚀<br><br>
-            The vibe? Simple, brother: Hold $ARAB MONEY, be about that Arab Money, and watch your pockets overflow like a Dubai oil well. 🌴💸<br><br>
-            This ain’t just a token—it’s a movement, my friend. The path to riches is clear: $ARAB MONEY will take you from taxi cabs to private jets faster than you can say "Habibi, I made it!" 🏎️✨<br><br>
-            Marketing? Oh, we’re everywhere, ya khoya—TikTok’s popping, Insta’s glowing, and the streets are talking. $ARAB MONEY is all about that lavish lifestyle energy.
-        </div>
+    <h1>$ArabMoney</h1>
+    <div class="emoji" id="emoji">💰</div>
+    <div class="click-prompt">Click to get Arab Money!</div>
+    <nav>
+        <a href="https://t.me/yourtelegramlink" target="_blank">Telegram</a>
+        <a href="https://pump.fun" target="_blank">Pump.fun</a>
+        <a href="https://www.instagram.com/yourinstagram" target="_blank">Instagram</a>
+        <a href="https://x.com/yourxprofile" target="_blank">X</a>
+        <a href="https://www.tiktok.com/@yourtiktok" target="_blank">TikTok</a>
+    </nav>
+    <div class="description">
+        💰$ARAB MONEY💰 is the ultimate high-roller meme coin on Solana, tradable on Jupiter, Raydium, and the hottest centralized exchanges! 🚀<br><br>
+
+        The vibe? Simple, brother: Hold $ARAB MONEY, be about that Arab Money, and watch your pockets overflow like a Dubai oil well. 🌴💸<br><br>
+
+        This ain’t just a token—it’s a movement, my friend. The path to riches is clear: $ARAB MONEY will take you from taxi cabs to private jets faster than you can say "Habibi, I made it!" 🏎️✨<br><br>
+
+        Marketing? Oh, we’re everywhere, ya khoya—TikTok’s popping, Insta’s glowing, and the streets are talking. $ARAB MONEY is all about that lavish lifestyle energy.
     </div>
+
     <audio id="click-sound" src="assets/coin-drop.mp3"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const desktopVideo = document.getElementById('desktop-video');
+            const mobileVideo = document.getElementById('mobile-video');
+
+            // Check window width to determine which video to play
+            if (window.innerWidth <= 768) {
+                desktopVideo.pause();
+                desktopVideo.style.display = 'none';
+                mobileVideo.style.display = 'block';
+                mobileVideo.play();
+            } else {
+                mobileVideo.pause();
+                mobileVideo.style.display = 'none';
+                desktopVideo.style.display = 'block';
+                desktopVideo.play();
+            }
+
+            // Listen for window resize to toggle video
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768) {
+                    desktopVideo.pause();
+                    desktopVideo.style.display = 'none';
+                    mobileVideo.style.display = 'block';
+                    mobileVideo.play();
+                } else {
+                    mobileVideo.pause();
+                    mobileVideo.style.display = 'none';
+                    desktopVideo.style.display = 'block';
+                    desktopVideo.play();
+                }
+            });
+
+            // Falling emoji animation logic
+            const emojiElement = document.getElementById('emoji');
+            const clickSound = document.getElementById('click-sound');
+
+            emojiElement.addEventListener('click', () => {
+                clickSound.currentTime = 0;
+                clickSound.play();
+
+                for (let i = 0; i < 50; i++) {
+                    const fallingEmoji = document.createElement('div');
+                    const emojis = ['💵', '💰'];
+                    fallingEmoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                    fallingEmoji.classList.add('falling-emoji');
+                    fallingEmoji.style.left = Math.random() * 100 + 'vw';
+                    fallingEmoji.style.animationDuration = Math.random() * 1 + 2 + 's';
+                    fallingEmoji.style.fontSize = '4rem';
+                    document.body.appendChild(fallingEmoji);
+
+                    fallingEmoji.addEventListener('animationend', () => {
+                        fallingEmoji.remove();
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
