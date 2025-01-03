@@ -1,255 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>$ArabMoney</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        @font-face {
-            font-family: 'Pricedown';
-            src: url('https://githubraw.com/alextwothousand/pricedown-font-web/refs/heads/master/pricedown.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        /* General styles */
-        body {
-            margin: 0;
-            height: 100vh;
-            background: black;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Pricedown', sans-serif;
-            color: white;
-            overflow: hidden;
-            position: relative;
-        }
-
-        h1 {
-            font-family: 'Pricedown', sans-serif;
-            font-size: 4rem; /* Adjust the size as needed */
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            margin: 0;
-        }
-
-        nav {
-            margin-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        nav a {
-            font-family: 'Pricedown', sans-serif; /* Changed to Pricedown font */
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 15px;
-            border: 1px solid white;
-            border-radius: 5px;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        nav a:hover {
-            background: white;
-            color: black;
-        }
-
-        .emoji {
-            font-size: 2.5rem;
-            cursor: pointer;
-            margin-top: 20px;
-            animation: shake 1s infinite;
-        }
-
-        .click-prompt {
-            font-family: 'Pricedown', sans-serif;
-            font-size: 1.2rem;
-            margin-top: 10px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        .falling-emoji {
-            position: absolute;
-            top: -50px;
-            font-size: 4rem;
-            animation: fall 3s linear forwards;
-        }
-
-        /* Background video styles */
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        /* Keyframes for animations */
-        @keyframes fall {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(100vh);
-            }
-        }
-
-        @keyframes shake {
-            0%, 100% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-5px);
-            }
-            50% {
-                transform: translateX(5px);
-            }
-            75% {
-                transform: translateX(-5px);
-            }
-        }
-
-        /* Styles for mobile devices */
-        @media screen and (max-width: 768px) {
-            h1 {
-                font-size: 2.4rem !important; /* Adjusted to 2.4rem */
-            }
-
-            .emoji {
-                font-size: 2rem;
-            }
-
-            .click-prompt {
-                font-size: 1rem;
-            }
-
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-
-            nav a {
-                font-size: 1rem;
-                padding: 8px 12px;
-                margin: 5px;
-            }
-
-            .description {
-                font-size: 0.8rem;
-                max-width: 100%;
-                line-height: 1.4;
-            }
-
-            .falling-emoji {
-                font-size: 4rem;
-                animation-duration: 4s;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solana Wallet Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #1c1c1c;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      background: #333;
+      color: white;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-    <video autoplay loop muted id="desktop-video" class="background-video">
-        <source src="assets/background-new.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+  <div class="container">
+    <h1>Calculate Your Gains</h1>
+    <input type="text" id="walletAddress" placeholder="Enter your Solana wallet address">
+    <button onclick="getWalletStats()">Check Stats</button>
+    <div class="output" id="output"></div>
+  </div>
 
-    <video autoplay loop muted id="mobile-video" class="background-video hidden">
-        <source src="assets/mobile-background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+  <script>
+    async function getWalletStats() {
+      const walletAddress = document.getElementById('walletAddress').value;
+      const outputDiv = document.getElementById('output');
+      outputDiv.textContent = 'Fetching data...';
 
-    <h1>$ArabMoney</h1>
-    <div class="emoji" id="emoji">💰</div>
-    <div class="click-prompt">Click on the emoji to get Arab Money!</div>
-    <nav>
-        <a href="https://t.me/arabmoneycoin" target="_blank">Telegram</a>
-        <a href="https://pump.fun/coin/48LC4V5ipe8zaouByGUqeghxkyJeNh9oxm3ZLgHepump">Pump.fun</a>
-        <a href="https://www.instagram.com/arabmoneysol" target="_blank">Instagram</a>
-        <a href="https://x.com/ArabMoneyOnSol" target="_blank">X</a>
-        <a href="https://www.tiktok.com/@arabmoneyonsol" target="_blank">TikTok</a>
-    </nav>
-    <div class="description">
-        💰$ARABMONEY💰 is the ultimate high-roller meme coin on Solana, tradable on Jupiter, Raydium, and the hottest centralized exchanges! 🚀<br><br>
+      try {
+        const response = await fetch(`https://api.example.com/wallet-stats?address=${walletAddress}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch wallet stats');
+        }
+        const data = await response.json();
 
-        The vibe? Simple, brother: Hold $ARABMONEY, be about that Arab Money, and watch your pockets overflow like a Dubai oil well. 🌴💸<br><br>
-
-        This ain’t just a token—it’s a movement, my friend. The path to riches is clear: $ARABMONEY will take you from taxi cabs to private jets faster than you can say "Habibi, I made it!" 🏎️✨<br><br>
-
-        Marketing? Oh, we’re everywhere, ya khoya—TikTok’s popping, Insta’s glowing, and the streets are talking. $ARABMONEY is all about that lavish lifestyle energy.
-    </div>
-
-    <audio id="click-sound" src="assets/coin-drop.mp3"></audio>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const desktopVideo = document.getElementById('desktop-video');
-            const mobileVideo = document.getElementById('mobile-video');
-
-            // Check window width to determine which video to play
-            if (window.innerWidth <= 768) {
-                desktopVideo.pause();
-                desktopVideo.style.display = 'none';
-                mobileVideo.style.display = 'block';
-                mobileVideo.play();
-            } else {
-                mobileVideo.pause();
-                mobileVideo.style.display = 'none';
-                desktopVideo.style.display = 'block';
-                desktopVideo.play();
-            }
-
-            // Listen for window resize to toggle video
-            window.addEventListener('resize', () => {
-                if (window.innerWidth <= 768) {
-                    desktopVideo.pause();
-                    desktopVideo.style.display = 'none';
-                    mobileVideo.style.display = 'block';
-                    mobileVideo.play();
-                } else {
-                    mobileVideo.pause();
-                    mobileVideo.style.display = 'none';
-                    desktopVideo.style.display = 'block';
-                    desktopVideo.play();
-                }
-            });
-
-            // Falling emoji animation logic
-            const emojiElement = document.getElementById('emoji');
-            const clickSound = document.getElementById('click-sound');
-
-            emojiElement.addEventListener('click', () => {
-                clickSound.currentTime = 0;
-                clickSound.play();
-
-                for (let i = 0; i < 50; i++) {
-                    const fallingEmoji = document.createElement('div');
-                    const emojis = ['💵', '💰'];
-                    fallingEmoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                    fallingEmoji.classList.add('falling-emoji');
-                    fallingEmoji.style.left = Math.random() * 100 + 'vw';
-                    fallingEmoji.style.animationDuration = Math.random() * 1 + 2 + 's';
-                    fallingEmoji.style.fontSize = '4rem';
-                    document.body.appendChild(fallingEmoji);
-
-                    fallingEmoji.addEventListener('animationend', () => {
-                        fallingEmoji.remove();
-                    });
-                }
-            });
-        });
-    </script>
+        outputDiv.innerHTML = `
+          <p><strong>Win Percentage:</strong> ${data.winPercentage}%</p>
+          <p><strong>Since:</strong> ${data.startDate}</p>
+        `;
+      } catch (error) {
+        outputDiv.textContent = `Error: ${error.message}`;
+      }
+    }
+  </script>
 </body>
 </html>
