@@ -1,95 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solana Wallet Tracker</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #000;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: #1c1c1c;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-      max-width: 400px;
-      width: 100%;
-    }
-    h1 {
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
-      margin-bottom: 20px;
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #444;
-      border-radius: 4px;
-      background: #333;
-      color: white;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    button:hover {
-      background: #0056b3;
-    }
-    .output {
-      margin-top: 20px;
-      font-size: 14px;
-      color: #ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arab AI Agent</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: url('your-image-url-here') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .chatbox {
+            width: 400px;
+            height: 500px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            color: white;
+        }
+        .chat-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .chat-messages p {
+            margin: 5px 0;
+        }
+        .chat-input {
+            display: flex;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+        .chat-input button {
+            padding: 10px 15px;
+            border: none;
+            background: #ffbf00;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Calculate Your Gains</h1>
-    <input type="text" id="walletAddress" placeholder="Enter your Solana wallet address">
-    <button onclick="getWalletStats()">Check Stats</button>
-    <div class="output" id="output"></div>
-  </div>
+    <div class="chatbox">
+        <div class="chat-header">Arab AI Agent</div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message here..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
 
-  <script>
-    async function getWalletStats() {
-      const walletAddress = document.getElementById('walletAddress').value;
-      const outputDiv = document.getElementById('output');
-      outputDiv.textContent = 'Fetching data...';
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        
+        function sendMessage() {
+            const userInput = document.getElementById('userInput');
+            const userMessage = userInput.value.trim();
 
-      try {
-        const response = await fetch(`https://api.example.com/wallet-stats?address=${walletAddress}`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch wallet stats');
+            if (userMessage === '') return;
+
+            appendMessage('You', userMessage);
+            userInput.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const aiResponse = getAIResponse(userMessage);
+                appendMessage('Arab AI', aiResponse);
+            }, 1000);
         }
-        const data = await response.json();
 
-        outputDiv.innerHTML = `
-          <p><strong>Win Percentage:</strong> ${data.winPercentage}%</p>
-          <p><strong>Since:</strong> ${data.startDate}</p>
-        `;
-      } catch (error) {
-        outputDiv.textContent = `Error: ${error.message}`;
-      }
-    }
-  </script>
+        function appendMessage(sender, message) {
+            const messageElement = document.createElement('p');
+            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getAIResponse(userMessage) {
+            // Simple AI logic for demonstration purposes
+            const responses = {
+                hello: "Salam! How can I assist you today?",
+                who: "I am your Arab AI agent, always here to help!",
+                solana: "Solana is a powerful blockchain. What would you like to know?",
+            };
+            return responses[userMessage.toLowerCase()] || "I'm sorry, I didn't understand that. Can you rephrase?";
+        }
+    </script>
 </body>
-</html>
