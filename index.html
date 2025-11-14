@@ -95,6 +95,17 @@ a:hover{
   background:rgba(255,255,255,0.08);
   padding:10px 14px;
   border-radius:8px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.ca:hover{
+  background:rgba(255,255,255,0.15);
+}
+
+.ca.copied{
+  background:rgba(50,205,50,0.3);
+  color:#adff2f;
 }
 
 .tagline{
@@ -113,7 +124,26 @@ a:hover{
   <div class="tagline">"Inhale hope. Exhale cope."</div>
   <a href="https://x.com/HopiumOnX" target="_blank">🐦 X / Twitter</a>
   <a href="https://dexscreener.com/solana/aeq53kefnqae4grhd179wwu3yro4sjpccnmbrskahvpw" target="_blank">📈 Dexscreener</a>
-  <div class="ca">CA: EQa1UjAbYkLe69vptYrxhr4xuBzbBC4iqwnAzoyZpump</div>
+  <div class="ca" id="caAddress" title="Click to copy">CA: EQa1UjAbYkLe69vptYrxhr4xuBzbBC4iqwnAzoyZpump</div>
 </div>
+
+<script>
+const ca = document.getElementById('caAddress');
+
+ca.addEventListener('click', () => {
+  const text = ca.textContent.replace('CA: ', ''); // Copy only the address
+  navigator.clipboard.writeText(text).then(() => {
+    ca.classList.add('copied');
+    ca.textContent = 'Copied!';
+    setTimeout(() => {
+      ca.classList.remove('copied');
+      ca.textContent = 'CA: ' + text;
+    }, 1500);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+});
+</script>
+
 </body>
 </html>
