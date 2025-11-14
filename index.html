@@ -1,110 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arab AI Agent</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: url('your-image-url-here') no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .chatbox {
-            width: 400px;
-            height: 500px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            color: white;
-        }
-        .chat-header {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .chat-messages {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-        }
-        .chat-messages p {
-            margin: 5px 0;
-        }
-        .chat-input {
-            display: flex;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-        }
-        .chat-input button {
-            padding: 10px 15px;
-            border: none;
-            background: #ffbf00;
-            color: black;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>$HOPIUM — Breath of Hope (Meme Coin)</title>
+<meta name="description" content="$HOPIUM — a playful meme coin for the optimists. Follow us on X and track on Dexscreener.">
+<style>
+:root{--bg:#0b1020;--accent:#ffcc33;--muted:#cbd5e1}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial;background:linear-gradient(180deg,#02031a 0%,#071028 50%,#081021 100%);color:#fff}
+.hero{min-height:60vh;display:flex;align-items:center;justify-content:center;padding:40px}
+.card{width:100%;max-width:1100px;background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(2,6,23,0.7);display:grid;grid-template-columns:1fr 420px}
+.left{padding:36px}
+h1{font-size:48px;margin:0 0 8px;letter-spacing:1px}
+.tag{display:inline-block;background:rgba(255,255,255,0.04);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--accent);margin-bottom:16px}
+p.lead{color:var(--muted);margin-top:0}
+.actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{background:var(--accent);color:#081021;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+.meta{margin-top:18px;color:var(--muted);font-size:14px}
+.right{position:relative;display:flex;align-items:center;justify-content:center;padding:0}
+.cover{width:100%;height:100%;min-height:320px;background-image:url('/mnt/data/photo_2025-11-14_14-13-36.jpg');background-size:cover;background-position:center}
+.overlay{position:absolute;bottom:14px;left:14px;background:rgba(0,0,0,0.45);padding:10px 12px;border-radius:10px;font-weight:600}
+
+
+/* sections */
+.container{max-width:1100px;margin:28px auto;padding:0 20px}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+.panel{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px}
+ul{padding-left:18px}
+.token-addr{font-family:monospace;background:rgba(255,255,255,0.02);padding:10px;border-radius:8px;overflow:auto}
+footer{color:var(--muted);text-align:center;padding:28px 12px}
+
+
+@media (max-width:940px){.card{grid-template-columns:1fr} .right{order:-1}.grid{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <div class="chatbox">
-        <div class="chat-header">Arab AI Agent</div>
-        <div class="chat-messages" id="chatMessages"></div>
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type your message here..." />
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
+<section class="hero">
+<div class="card" role="region" aria-label="Hopium hero">
+<div class="left">
+<span class="tag">Meme • Solana-based</span>
+<h1>$HOPIUM</h1>
+<p class="lead">Inhale the dreams, exhale the FUD. $HOPIUM is a community-first meme token built for optimism, laughs, and moon-shot vibes.</p>
+<div class="actions">
+<a class="btn" href="https://dexscreener.com/solana/aeq53kefnqae4grhd179wwu3yro4sjpccnmbrskahvpw" target="_blank" rel="noopener noreferrer">Track on Dexscreener</a>
+<a class="btn ghost" href="https://x.com/HopiumOnX" target="_blank" rel="noopener noreferrer">Follow on X</a>
+</div>
+<div class="meta">
+<div><strong>Contract / Creator Address</strong></div>
+<div class="token-addr">CA: EQa1UjAbYkLe69vptYrxhr4xuBzbBC4iqwnAzoyZpump</div>
+</div>
+</div>
+<div class="right">
+<div class="cover" role="img" aria-label="Hopium artwork"></div>
+<div class="overlay">$HOPIUM</div>
+</div>
+</div>
+</section>
 
-    <script>
-        const chatMessages = document.getElementById('chatMessages');
-        
-        function sendMessage() {
-            const userInput = document.getElementById('userInput');
-            const userMessage = userInput.value.trim();
 
-            if (userMessage === '') return;
+<main class="container">
+<div class="grid">
+<div>
+<div class="panel">
+<h3>How to buy</h3>
+<ol>
+<li>Install a Solana wallet (Phantom, Solflare).</li>
+<li>Fund with SOL.</li>
+<li>Open the Dexscreener link and click the pair to route a swap on a DEX.</li>
+</ol>
+<p style="margin-top:12px;color:var(--muted)">Always verify the contract address before trading. Beware of scams — the community is the best defense.</p>
+</div>
 
-            appendMessage('You', userMessage);
-            userInput.value = '';
 
-            // Simulate AI response
-            setTimeout(() => {
-                const aiResponse = getAIResponse(userMessage);
-                appendMessage('Arab AI', aiResponse);
-            }, 1000);
-        }
+<div class="panel" style="margin-top:14px">
+<h3>Tokenomics (example)</h3>
+<ul>
+<li>Total supply: 1,000,000,000 $HOPIUM</li>
+<li>Liquidity: 50%</li>
+<li>Community / Airdrop: 25%</li>
+<li>Team & Dev: 10% (locked)</li>
+<li>Marketing: 15%</li>
+</ul>
+</div>
 
-        function appendMessage(sender, message) {
-            const messageElement = document.createElement('p');
-            messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
-            chatMessages.appendChild(messageElement);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
 
-        function getAIResponse(userMessage) {
-            // Simple AI logic for demonstration purposes
-            const responses = {
-                hello: "Salam! How can I assist you today?",
-                who: "I am your Arab AI agent, always here to help!",
-                solana: "Solana is a powerful blockchain. What would you like to know?",
-            };
-            return responses[userMessage.toLowerCase()] || "I'm sorry, I didn't understand that. Can you rephrase?";
-        }
-    </script>
+<div class="panel" style="margin-top:14px">
+<h3>Roadmap</h3>
+<ul>
+<li>Phase 1 — Launch & Listing on Dexscreener</li>
+<li>Phase 2 — Community events, memes, NFT drops</li>
+<li>Phase 3 — Partnerships & utility experiments</li>
+</ul>
+</div>
+</div>
+
+
+<aside>
+<div class="panel">
+<h4>Quick links</h4>
+<ul>
+<li><a href="https://x.com/HopiumOnX" target="_blank" rel="noopener noreferrer">X / Twitter — @HopiumOnX</a></li>
+<li><a href="https://dexscreener.com/solana/aeq53kefnqae4grhd179wwu3yro4sjpccnmbrskahvpw" target="_blank" rel="noopener noreferrer">Dexscreener Pair</a></li>
+<li><span class="token-addr">CA: EQa1UjAbYkLe69vptYrxhr4xuBzbBC4iqwnAzoyZpump</span></li>
+</ul>
+</div>
+
+
+<div class="panel" style="margin-top:14px">
+<h4>Join the community</h4>
+<p class="lead" style="margin:0">Follow announcements on X and participate in meme competitions. Share responsibly.</p>
+</div>
+</aside>
+</div>
+</main>
+
+
+<footer>
+<div>Not financial advice. Always DYOR.</div>
+<div style="margin-top:8px">Built with ❤️ for hopers.</div>
+</footer>
 </body>
+</html>
