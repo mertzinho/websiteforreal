@@ -21,7 +21,7 @@
   50% { transform: scale(1.08); }
 }
 
-body,html{
+body, html {
   margin:0;
   padding:0;
   height:100%;
@@ -30,7 +30,7 @@ body,html{
   overflow:hidden;
 }
 
-.bg{
+.bg {
   position:fixed;
   top:0;
   left:0;
@@ -41,7 +41,7 @@ body,html{
   z-index:-2;
 }
 
-.gradient-overlay{
+.gradient-overlay {
   position:fixed;
   top:0;
   left:0;
@@ -51,7 +51,7 @@ body,html{
   z-index:-1;
 }
 
-.content{
+.content {
   position:absolute;
   bottom:50px;
   left:50%;
@@ -61,18 +61,21 @@ body,html{
   background:rgba(0,0,0,0.55);
   border-radius:14px;
   animation: fadeUp 1.2s ease-out;
+  max-width:90%;
+  box-sizing:border-box;
 }
 
-h1{
+h1 {
   font-size:52px;
   margin:0 0 12px;
   font-weight:800;
   color:#ffde73;
   animation: pulseGlow 2.5s infinite ease-in-out, breathe 4s ease-in-out infinite;
   letter-spacing:2px;
+  word-break: break-word;
 }
 
-a{
+a {
   color:#ffcc44;
   text-decoration:none;
   font-weight:bold;
@@ -80,14 +83,15 @@ a{
   display:block;
   margin:12px 0;
   transition:0.25s;
+  word-break: break-word;
 }
 
-a:hover{
+a:hover {
   color:#ffe9a6;
   transform:scale(1.05);
 }
 
-.ca{
+.ca {
   font-size:16px;
   margin-top:16px;
   color:#eee;
@@ -97,22 +101,67 @@ a:hover{
   border-radius:8px;
   cursor:pointer;
   transition:0.2s;
+  word-break: break-word;
 }
 
-.ca:hover{
+.ca:hover {
   background:rgba(255,255,255,0.15);
 }
 
-.ca.copied{
+.ca.copied {
   background:rgba(50,205,50,0.3);
   color:#adff2f;
 }
 
-.tagline{
+.tagline {
   font-size:20px;
   margin-bottom:18px;
   color:#f3dcb0;
   font-style:italic;
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size:38px;
+  }
+  .tagline {
+    font-size:16px;
+    margin-bottom:12px;
+  }
+  a {
+    font-size:18px;
+    margin:8px 0;
+  }
+  .ca {
+    font-size:14px;
+    padding:8px 10px;
+  }
+  .content {
+    padding:16px 20px;
+    bottom:30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size:30px;
+  }
+  .tagline {
+    font-size:14px;
+    margin-bottom:10px;
+  }
+  a {
+    font-size:16px;
+  }
+  .ca {
+    font-size:13px;
+    padding:6px 8px;
+  }
+  .content {
+    padding:12px 16px;
+    bottom:20px;
+  }
 }
 </style>
 </head>
@@ -144,6 +193,5 @@ ca.addEventListener('click', () => {
   });
 });
 </script>
-
 </body>
 </html>
